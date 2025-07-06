@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  takpphpeditor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: takpphpeditor
+    ports:
+      - "42069:80"
+    restart: always
+    environment:
+      DB_HOST: 172.17.0.1
+      DB_USER: quarm
+      DB_PASSWORD: quarm
+      DB_NAME: quarm
+      DB_PORT: 3306
+    entrypoint: ["entrypoint.sh"]
+    volumes:
+      - ./entrypoint.sh:/usr/local/bin/entrypoint.sh
+
